@@ -1,7 +1,18 @@
-fun main(args: Array<String>) {
-    println("Hello World!")
+import eventfieldstuff.*
 
-    // Try adding program arguments via Run/Debug configuration.
-    // Learn more about running applications: https://www.jetbrains.com/help/idea/running-applications.html.
-    println("Program arguments: ${args.joinToString()}")
+fun main(args: Array<String>) {
+    val a: FieldInstantiator<IntEventField> = EventFields.Int()
+
+}
+
+class SomeFeatureProvider: FeatureProvider {
+    companion object: EventFieldRegistry() {
+        internal val BLA: IntEventField by EventFields.Int()
+    }
+
+    override fun getEventFields(): EventFieldRegistry = Companion
+}
+
+interface FeatureProvider {
+    fun getEventFields(): EventFieldRegistry
 }
